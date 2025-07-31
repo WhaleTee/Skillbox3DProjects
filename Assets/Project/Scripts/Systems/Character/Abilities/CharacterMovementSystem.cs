@@ -2,8 +2,10 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 [UpdateAfter(typeof(CharacterDashSystem))]
+[BurstCompile]
 public partial struct CharacterMovementSystem : ISystem
 {
     [BurstCompile]
@@ -18,8 +20,7 @@ public partial struct CharacterMovementSystem : ISystem
 public partial struct CharacterMovementJob : IJobEntity
 {
     public float DeltaTime;
-
-    [BurstCompile]
+    
     private void Execute(ref LocalTransform transform, in MoveAbility ability)
     {
         if (ability.Direction.Equals(float3.zero)) return;

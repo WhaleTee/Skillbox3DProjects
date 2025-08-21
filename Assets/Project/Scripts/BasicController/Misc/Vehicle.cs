@@ -1,11 +1,11 @@
 using System;
-using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 
-[Serializable]
-public struct Vehicle : IComponentData
+namespace Project.Scripts.BasicController.Misc
 {
+  [Serializable]
+  public struct Vehicle : IComponentData
+  {
     public float MaxSpeed;
     public float Acceleration;
     public float MaxRotationSpeed;
@@ -17,10 +17,11 @@ public struct Vehicle : IComponentData
 
     public float WheelSuspensionDistance;
     public float WheelSuspensionStrength;
-}
+  }
 
-public struct VehicleWheels : IBufferElementData
-{
+  public struct VehicleWheels : IBufferElementData
+  {
     public Entity MeshEntity;
     public Entity CollisionEntity;
+  }
 }

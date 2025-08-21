@@ -1,25 +1,24 @@
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Physics.Authoring;
-using UnityEngine;
 using Unity.CharacterController;
-using Unity.Physics;
-using UnityEngine.Serialization;
+using Unity.Entities;
+using UnityEngine;
 
-[DisallowMultipleComponent]
-public class BasicCharacterAuthoring : MonoBehaviour
+namespace Project.Scripts.BasicController.Character
 {
+  [DisallowMultipleComponent]
+  public class BasicCharacterAuthoring : MonoBehaviour
+  {
     public AuthoringKinematicCharacterProperties characterProperties = AuthoringKinematicCharacterProperties.GetDefault();
     public BasicCharacterProperties character = BasicCharacterProperties.GetDefault();
 
     public class Baker : Baker<BasicCharacterAuthoring>
     {
-        public override void Bake(BasicCharacterAuthoring authoring)
-        {
-            KinematicCharacterUtilities.BakeCharacter(this, authoring, authoring.characterProperties);
+      public override void Bake(BasicCharacterAuthoring authoring)
+      {
+        KinematicCharacterUtilities.BakeCharacter(this, authoring, authoring.characterProperties);
 
-            AddComponent(GetEntity(TransformUsageFlags.Dynamic), authoring.character);
-            AddComponent(GetEntity(TransformUsageFlags.Dynamic), new BasicCharacterControl());
-        }
+        AddComponent(GetEntity(TransformUsageFlags.Dynamic), authoring.character);
+        AddComponent(GetEntity(TransformUsageFlags.Dynamic), new BasicCharacterControl());
+      }
     }
+  }
 }

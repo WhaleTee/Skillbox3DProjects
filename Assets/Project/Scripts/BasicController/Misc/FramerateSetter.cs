@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
+using UnityEngine;
 
-public class FramerateSetter : MonoBehaviour
+namespace Project.Scripts.BasicController.Misc
 {
+  public class FramerateSetter : MonoBehaviour
+  {
     public int Framerate = -1;
     public float FixedFramerate = 60;
     
     void Start()
     {
-        Application.targetFrameRate = Framerate;
+      Application.targetFrameRate = Framerate;
         
-        FixedStepSimulationSystemGroup fixedSystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<FixedStepSimulationSystemGroup>();
-        fixedSystem.Timestep = 1f / FixedFramerate;
+      FixedStepSimulationSystemGroup fixedSystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<FixedStepSimulationSystemGroup>();
+      fixedSystem.Timestep = 1f / FixedFramerate;
     }
+  }
 }

@@ -1,7 +1,10 @@
 ﻿using Unity.Entities;
 
-public struct MoveAbilityConfig : IComponentData
+namespace Project.Scripts.Components.Character.Config
 {
+  public struct MoveAbilityConfig : IComponentData
+  {
     public float WalkSpeed;
     public float RunSpeed;
+  }
 }

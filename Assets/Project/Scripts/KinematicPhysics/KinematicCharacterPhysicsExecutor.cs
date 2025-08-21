@@ -1,13 +1,17 @@
 ﻿using System.Runtime.CompilerServices;
+using Project.Scripts.BasicController.Character;
 
-public static class KinematicCharacterPhysicsExecutor {
-  [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void Execute(
-    KinematicCharacterPhysicsUpdateExecutor physicsUpdateExecutor,
-    KinematicCharacterPhysicsUpdateStepHandler physicsUpdateStepsHandler
-  ) {
-    physicsUpdateExecutor.ExecuteFirstPhysicsStep();
-    physicsUpdateStepsHandler.HandlePhysicsIntermediateStep();
-    physicsUpdateExecutor.ExecuteSecondPhysicsStep();
+namespace Project.Scripts.KinematicPhysics
+{
+  public static class KinematicCharacterPhysicsExecutor {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void Execute(
+      KinematicCharacterPhysicsUpdateExecutor physicsUpdateExecutor,
+      BasicKinematicCharacterPhysicsUpdateStepHandler physicsUpdateStepsHandler
+    ) {
+      physicsUpdateExecutor.ExecuteFirstPhysicsStep();
+      physicsUpdateStepsHandler.HandlePhysicsIntermediateStep();
+      physicsUpdateExecutor.ExecuteSecondPhysicsStep();
+    }
   }
 }

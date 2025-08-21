@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
+using UnityEngine;
 
-[DisallowMultipleComponent]
-public class CameraTargetAuthoring : MonoBehaviour
+namespace Project.Scripts.BasicController.Camera
 {
+  [DisallowMultipleComponent]
+  public class CameraTargetAuthoring : MonoBehaviour
+  {
     public GameObject Target;
 
     public class Baker : Baker<CameraTargetAuthoring>
     {
-        public override void Bake(CameraTargetAuthoring authoring)
+      public override void Bake(CameraTargetAuthoring authoring)
+      {
+        AddComponent(GetEntity(TransformUsageFlags.Dynamic), new CameraTarget
         {
-            AddComponent(GetEntity(TransformUsageFlags.Dynamic), new CameraTarget
-            {
-                TargetEntity = GetEntity(authoring.Target, TransformUsageFlags.Dynamic),
-            });
-        }
+          TargetEntity = GetEntity(authoring.Target, TransformUsageFlags.Dynamic),
+        });
+      }
     }
+  }
 } 

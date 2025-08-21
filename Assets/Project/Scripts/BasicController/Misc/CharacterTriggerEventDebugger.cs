@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
-using UnityEngine;
 
-public struct CharacterTriggerEventDebugger : IComponentData
+namespace Project.Scripts.BasicController.Misc
 {
+  public struct CharacterTriggerEventDebugger : IComponentData
+  {
+  }
 }

@@ -1,31 +1,35 @@
-﻿using Unity.Burst;
+﻿using Project.Scripts.BasicController.Camera;
+using Unity.Burst;
 using Unity.Entities;
 
-[UpdateInGroup(typeof(SimulationSystemGroup))]
-[UpdateAfter(typeof(FixedStepSimulationSystemGroup))]
-[BurstCompile]
-public partial struct BasicPlayerVariableStepControlSystem : ISystem
+namespace Project.Scripts.BasicController.Player
 {
+  [UpdateInGroup(typeof(SimulationSystemGroup))]
+  [UpdateAfter(typeof(FixedStepSimulationSystemGroup))]
   [BurstCompile]
-  public void OnCreate(ref SystemState state)
+  public partial struct BasicPlayerVariableStepControlSystem : ISystem
   {
-    state.RequireForUpdate(SystemAPI.QueryBuilder().WithAll<BasicPlayer, BasicPlayerInputs>().Build());
-  }
-
-  [BurstCompile]
-  public void OnUpdate(ref SystemState state)
-  {
-    foreach (var (playerInputs, player) in SystemAPI.Query<RefRO<BasicPlayerInputs>, RefRO<BasicPlayer>>().WithAll<Simulate>())
+    [BurstCompile]
+    public void OnCreate(ref SystemState state)
     {
-      if (SystemAPI.HasComponent<OrbitCameraControl>(player.ValueRO.ControlledCamera))
+      state.RequireForUpdate(SystemAPI.QueryBuilder().WithAll<BasicPlayer, BasicPlayerInputs>().Build());
+    }
+
+    [BurstCompile]
+    public void OnUpdate(ref SystemState state)
+    {
+      foreach (var (playerInputs, player) in SystemAPI.Query<RefRO<BasicPlayerInputs>, RefRO<BasicPlayer>>().WithAll<Simulate>())
       {
-        OrbitCameraControl cameraControl = SystemAPI.GetComponent<OrbitCameraControl>(player.ValueRO.ControlledCamera);
+        if (SystemAPI.HasComponent<OrbitCameraControl>(player.ValueRO.ControlledCamera))
+        {
+          OrbitCameraControl cameraControl = SystemAPI.GetComponent<OrbitCameraControl>(player.ValueRO.ControlledCamera);
 
-        cameraControl.FollowedCharacterEntity = player.ValueRO.ControlledCharacter;
-        cameraControl.LookDegreesDelta = playerInputs.ValueRO.CameraLookInput;
-        cameraControl.ZoomDelta = playerInputs.ValueRO.CameraZoomInput;
+          cameraControl.FollowedCharacterEntity = player.ValueRO.ControlledCharacter;
+          cameraControl.LookDegreesDelta = playerInputs.ValueRO.CameraLookInput;
+          cameraControl.ZoomDelta = playerInputs.ValueRO.CameraZoomInput;
 
-        SystemAPI.SetComponent(player.ValueRO.ControlledCamera, cameraControl);
+          SystemAPI.SetComponent(player.ValueRO.ControlledCamera, cameraControl);
+        }
       }
     }
   }

@@ -1,5 +1,8 @@
 ﻿using Unity.Entities;
 
-public interface OnSystemCreate {
-  void OnSystemCreate(ref SystemState state);
+namespace Project.Scripts
+{
+  public interface OnSystemCreate {
+    void OnSystemCreate(ref SystemState state);
+  }
 }

@@ -1,3 +1,6 @@
-﻿public interface UpdateContext : OnSystemCreate, OnSystemUpdate { }
+﻿namespace Project.Scripts
+{
+  public interface UpdateContext : OnSystemCreate, OnSystemUpdate { }
 
-public interface UpdateContext<in P1, in P2> : OnSystemCreate, OnSystemUpdate<P1, P2> { }
+  public interface UpdateContext<in P1, in P2> : OnSystemCreate, OnSystemUpdate<P1, P2> { }
+}

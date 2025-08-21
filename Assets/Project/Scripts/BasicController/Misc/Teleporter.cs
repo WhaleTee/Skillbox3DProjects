@@ -1,10 +1,11 @@
 ﻿using System;
-using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 
-[Serializable]
-public struct Teleporter : IComponentData
+namespace Project.Scripts.BasicController.Misc
 {
+  [Serializable]
+  public struct Teleporter : IComponentData
+  {
     public Entity DestinationEntity;
+  }
 }

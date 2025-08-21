@@ -1,15 +1,15 @@
 ﻿using System;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
-[Serializable]
-public struct OrbitCamera : IComponentData
+namespace Project.Scripts.BasicController.Camera
 {
+  [Serializable]
+  public struct OrbitCamera : IComponentData
+  {
     public float RotationSpeed;
-    public float MaxVAngle;
-    public float MinVAngle;
+    public float MaxViewAngle;
+    public float MinViewAngle;
     public bool RotateWithCharacterParent;
 
     public float MinDistance;
@@ -27,18 +27,19 @@ public struct OrbitCamera : IComponentData
     public float ObstructedDistance;
     public float PitchAngle;
     public float3 PlanarForward;
-}
+  }
 
-[Serializable]
-public struct OrbitCameraControl : IComponentData
-{
+  [Serializable]
+  public struct OrbitCameraControl : IComponentData
+  {
     public Entity FollowedCharacterEntity;
     public float2 LookDegreesDelta;
     public float ZoomDelta;
-}
+  }
 
-[Serializable]
-public struct OrbitCameraIgnoredEntityBufferElement : IBufferElementData
-{
+  [Serializable]
+  public struct OrbitCameraIgnoredEntityBufferElement : IBufferElementData
+  {
     public Entity Entity;
+  }
 }

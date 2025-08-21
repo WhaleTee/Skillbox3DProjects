@@ -792,7 +792,7 @@ MonoBehaviour:
   DistanceMovementSpeed: 1
   DistanceMovementSharpness: 20
   ObstructionRadius: 0.1
-  ObstructionInnerSmoothingSharpness: 3.4028235e+38
+  ObstructionInnerSmoothingSharpness: 3.402823e+38
   ObstructionOuterSmoothingSharpness: 5
   PreventFixedUpdateJitter: 1
   IgnoredEntities: []
@@ -1729,7 +1729,7 @@ MonoBehaviour:
     SimulateDynamicBody: 1
     Mass: 1
   character:
-    rotationSharpness: 25
+    rotationSharpness: 35
     groundMaxSpeed: 10
     groundedMovementSharpness: 15
     airAcceleration: 50

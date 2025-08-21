@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public class BouncySurfaceAuthoring : MonoBehaviour
+namespace Project.Scripts.BasicController.Misc
 {
+  public class BouncySurfaceAuthoring : MonoBehaviour
+  {
     public float BounceEnergyMultiplier = 1f;
 
     public class Baker : Baker<BouncySurfaceAuthoring>
     {
-        public override void Bake(BouncySurfaceAuthoring authoring)
+      public override void Bake(BouncySurfaceAuthoring authoring)
+      {
+        AddComponent(GetEntity(TransformUsageFlags.None), new BouncySurface
         {
-            AddComponent(GetEntity(TransformUsageFlags.None), new BouncySurface
-            {
-                BounceEnergyMultiplier = authoring.BounceEnergyMultiplier,
-            });
-        }
+          BounceEnergyMultiplier = authoring.BounceEnergyMultiplier,
+        });
+      }
     }
+  }
 }

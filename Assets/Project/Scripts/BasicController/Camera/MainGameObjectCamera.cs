@@ -1,15 +1,14 @@
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGameObjectCamera : MonoBehaviour
+namespace Project.Scripts.BasicController.Camera
 {
-    public static Camera Instance;
+  public class MainGameObjectCamera : MonoBehaviour
+  {
+    public static UnityEngine.Camera Instance;
 
     void Awake()
     {
-        Instance = GetComponent<UnityEngine.Camera>();
+      Instance = GetComponent<UnityEngine.Camera>();
     }
+  }
 }
